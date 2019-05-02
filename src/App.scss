@@ -13,6 +13,16 @@ $custom-colors: (
   "custom-orange": ($custom-orange),
 );
  
+
+dashed_box {
+  font-size: 14px;
+  background: white;
+  font-weight: bold;
+  border: 1px dashed $custom-gray;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 // Import Bulma styles
 @import "~bulma/bulma";
  
