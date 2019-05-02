@@ -1,19 +1,18 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import "./App.scss";
 import { Container, Section } from 'rbx';
 import Header from "./components/header";
-import Home from './screens/home'; 
-
-
+import Routes from './routes';
+ 
 const App = () => (
-  <Fragment>
+  <div>
     <Header />
     <Section>
       <Container>
-       <Home />
+        <Routes />
       </Container>
     </Section>
-  </Fragment>
+  </div>
 )
  
 export default App;
