@@ -17,5 +17,11 @@
       margin-bottom: 10px;
     }
  
+      img{
+        @media (min-width:641px) {
+          max-height: 69px;
+          width: 100%;
+        }
+      }
   }
 }
