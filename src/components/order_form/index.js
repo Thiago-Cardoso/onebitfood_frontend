@@ -15,6 +15,7 @@ class OrderForm extends Component {
       phone_number: '',
       restaurant_id: this.props.restaurant.id
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
  
@@ -26,6 +27,14 @@ class OrderForm extends Component {
     this.setState({
       [name]: value
     });
+  }
+ 
+  handleSubmit(event) {
+    event.preventDefault();
+    api.createOrder(this.state, this.props.order, this.props.address).then((response) => {
+      let id = response.data.order.id
+      history.push(`/orders/${id}`)
+    })
   }
  
   render() {
@@ -40,7 +49,7 @@ class OrderForm extends Component {
             
             <Column.Group>
               <Column size={10} offset={1}>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                   <Field>
                     <Label>Nome</Label>
                     <Control>
@@ -96,13 +105,15 @@ class OrderForm extends Component {
                   </Field>
  
                   <br/>
-                  <Field kind="group" align="centered">
-                    <Control>
-                      <Button size="medium" color="custom-orange">
-                        <span className="has-text-white">Realizar Pedido</span>
-                      </Button>
-                    </Control>
-                  </Field>
+                  {this.props.order.length > 0 && 
+                    <Field kind="group" align="centered">
+                      <Control>
+                        <Button size="medium" color="custom-orange">
+                          <span className="has-text-white">Realizar Pedido</span>
+                        </Button>
+                      </Control>
+                    </Field>
+                  }
                 </form>
               </Column>
             </Column.Group>
@@ -116,6 +127,7 @@ class OrderForm extends Component {
 const mapStateToProps = store => ({
   address: store.addressState.address,
   restaurant: store.newOrderState.restaurant,
+  order: store.newOrderState.order
 });
  
 export default connect(mapStateToProps)(OrderForm);
