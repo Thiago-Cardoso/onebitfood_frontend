@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { removeOrderItem } from "../../actions/new_order";
 import { hideModal } from "../../actions/modal";
 import "../../styles/order.scss";
+import history from '../../history';
  
 class Order extends Component {
   orderItemAmount = (orderItem) => {
@@ -26,6 +27,7 @@ class Order extends Component {
  
   closeOrder = () => {
     this.props.hideModal('ORDER_MODAL');
+    history.push('/orders/new')
   }
  
   render() {

@@ -8,7 +8,7 @@ import LogoImage from '../../assets/images/logo-v1-horizontal.png';
 import SearchBox from '../search_box_component';
 import { showModal } from "../../actions/modal";
 import { FaCrosshairs, FaShoppingBasket } from 'react-icons/fa';
- 
+import history from '../../history';
  
 import "../../styles/header.scss";
  
@@ -16,7 +16,7 @@ const Header = (props) => (
   <div className="top-navbar">
     <Container>
       <Navbar>
-          <Navbar.Brand>
+          <Navbar.Brand  onClick={e => history.push('/')}>
             <img src={LogoImage} />
           </Navbar.Brand>
  
@@ -46,4 +46,4 @@ const Header = (props) => (
  
 const mapDispatchToProps = dispatch => bindActionCreators({ showModal }, dispatch);
  
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header)
