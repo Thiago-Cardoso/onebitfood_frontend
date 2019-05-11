@@ -35,4 +35,5 @@ export default {
  
     return url.post(`orders`, order)
   },
+  loadOrder: (id) => url.get(`orders/${id}`),
 }
