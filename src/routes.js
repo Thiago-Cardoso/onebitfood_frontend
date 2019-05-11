@@ -4,6 +4,7 @@ import { Router, Switch, Route } from 'react-router-dom'
 import Home from './screens/home';
 import Restaurants from './screens/restaurants';
 import ShowRestaurant from './screens/show_restaurant';
+import CreateOrder from './screens/create_order';
 import history from './history';
  
 const Routes = () => (
@@ -12,6 +13,7 @@ const Routes = () => (
       <Route exact path='/' component={Home}  />
       <Route exact path='/restaurants' component={Restaurants} />
       <Route exact path='/restaurants/:id' component={ShowRestaurant} />
+      <Route exact path='/orders/new' component={CreateOrder} />
     </Switch>
   </Router>
 )
